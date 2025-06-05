@@ -40,11 +40,11 @@ df_topic_distr = pd.DataFrame(
 print('\n=== Distribuição de Tópicos por Documento ===')
 print(df_topic_distr)
 print('\n=== Top palavras em cada Tópico ===')
-for topic_idx, topic_weights in enumerate(topic_word_matrix):
+for topic_index, topic_weights in enumerate(topic_word_matrix):
     top_indices = topic_weights.argsort()[::-1][:n_top_words]
-    top_palavras = [vocab[i] for i in top_indices]
-    top_pesos   = [topic_weights[i] for i in top_indices]
-    print(f'Tópico {topic_idx+1}:')
-    for palavra, peso in zip(top_palavras, top_pesos):
-        print(f'   {palavra:<20} ({peso:.2f})')
+    top_words = [vocab[i] for i in top_indices]
+    top_weights = [topic_weights[i] for i in top_indices]
+    print(f'Topic {topic_index+1}:')
+    for word, weight in zip(top_words, top_weights):
+        print(f'   {word:<20} ({weight:.2f})')
     print()
